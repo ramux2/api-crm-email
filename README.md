@@ -28,4 +28,4 @@ Todos os serviços são executados utilizando **Docker** com **Dockerfiles** e *
 ### 1. Criar rede Docker compartilhada (uma única vez)
 
 ```bash
-docker network create crm-network
+sh mysql-start.sh
