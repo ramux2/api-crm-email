@@ -6,16 +6,16 @@ app = Flask(__name__)
 # URL da api de CRM
 CRM_API_URL = 'http://localhost:3000/'
 
-@app.route('/disparar-email', methods=['GET'])
+@app.route('/disparar-email', methods=['POST'])
 def disparar_email():
     # Consumindo dados de clientes e campanhas
-    clientes = requests.get().json()
-    campanhas = requests.get().json()
+    clientes = requests.get(CRM_API_URL + 'clientes').json()
+    campanhas = requests.get(CRM_API_URL + 'campanhas').json()
 
     # Simulando o envio de e-mails
     for cliente in clientes:
         for campanha in campanhas:
-            print(f'E-mail enviado para: {cliente['email']} com a campanha {campanha['nome']}')
+            print(f'E-mail enviado para: {cliente["email"]} com a campanha {campanha["nome"]}')
             
     return "E-mails disparados com sucesso!"
 
