@@ -29,3 +29,18 @@ Todos os serviços são executados utilizando **Docker** com **Dockerfiles** e *
 
 ```bash
 docker network create crm-network
+
+### 2. Subir o  MySQL
+
+```bash
+./scripts/mysql-start.sh
+
+### 3. Subir a API de E-mail (Flask)
+
+```bash
+./scripts/flask-start.sh
+
+### 4. Subir a API do CRM (Sprint)
+
+```bash
+./scripts/springboot-start.sh
