@@ -1,23 +1,30 @@
-from flask import Flask
-import requests
+from flask import Flask, jsonify
+from http import HTTPStatus
 
 app = Flask(__name__)
 
-# URL da api de CRM
-CRM_API_URL = 'http://localhost:3000/'
+# Dados mockados de clientes
+CLIENTES = [
+    {"id": 1, "nome": "Vinicius Sieben", "email": "vinicius.sieben@email.com"},
+    {"id": 2, "nome": "Guilherme Ramos", "email": "guilherme.ramos@email.com"},
+    {"id": 3, "nome": "João Barp", "email": "joao.barp@email.com"},
+    {"id": 4, "nome": "Barbara Woitas", "email": "barbara.woitas@email.com"},
+]
 
-@app.route('/disparar-email', methods=['POST'])
-def disparar_email():
-    # Consumindo dados de clientes e campanhas
-    clientes = requests.get(CRM_API_URL + 'clientes').json()
-    campanhas = requests.get(CRM_API_URL + 'campanhas').json()
+# Dados mockados de campanhas
+CAMPANHAS = [
+    {"id": 1, "nome": "Lançamento de Produto"},
+    {"id": 2, "nome": "Campanha de Fidelidade"},
+    {"id": 3, "nome": "Black Friday"},
+]
 
-    # Simulando o envio de e-mails
-    for cliente in clientes:
-        for campanha in campanhas:
-            print(f'E-mail enviado para: {cliente["email"]} com a campanha {campanha["nome"]}')
-            
-    return "E-mails disparados com sucesso!"
+@app.route('/clientes', methods=['GET'])
+def buscar_clientes():
+    return jsonify(CLIENTES), HTTPStatus.OK
+
+@app.route('/campanhas', methods=['GET'])
+def buscar_campanhas():
+    return jsonify(CAMPANHAS), HTTPStatus.OK
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=3000)
