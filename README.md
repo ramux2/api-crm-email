@@ -11,26 +11,27 @@ Este projeto simula um sistema de CRM que dispara campanhas de e-mail usando dua
 
 ```bash
 docker network create crm-network
+```
 
 ### 2. Build da API do CRM
 
 ```bash
 docker build -t crm-api
-
+```
 ### 3. Build da API do envio de email
 
 ```bash
 docker build -t email-api
-
+```
 ### 4. Rodar a API do CRM
 
 ```bash
 docker run -p 3000:3000 --network crm-network --name crm-api-container crm-api
-
+```
 ### 5. Rodar a API do Email
 
 ```bash
 docker run -p 5000:5000 --network crm-network --name email-api-container email-api
-
+```
 
 
