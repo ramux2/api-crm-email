@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN pip install flask requests jsonify
+RUN pip install flask requests
 
 EXPOSE 3000
 
