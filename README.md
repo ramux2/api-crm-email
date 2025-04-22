@@ -16,12 +16,12 @@ docker network create crm-network
 ### 2. Build da API do CRM
 
 ```bash
-docker build -t crm-api
+docker build -t crm-api .
 ```
 ### 3. Build da API do envio de email
 
 ```bash
-docker build -t email-api
+docker build -t email-api .
 ```
 ### 4. Rodar a API do CRM
 
